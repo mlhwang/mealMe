@@ -24,4 +24,12 @@
         tools:layout_editor_absoluteX="220dp"
         tools:layout_editor_absoluteY="332dp" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_camera"
+        tools:layout_editor_absoluteX="65dp"
+        tools:layout_editor_absoluteY="368dp" />
+
 </android.support.constraint.ConstraintLayout>
