@@ -29,14 +29,6 @@
             android:onClick="onButtonClick"
             android:text="@string/log_a_meal" />
 
-        <ImageView
-            android:id="@+id/imageViewID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/image_of_user_meal"
-            app:srcCompat="@android:drawable/ic_menu_camera"
-            tools:layout_editor_absoluteX="65dp"
-            tools:layout_editor_absoluteY="368dp" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
