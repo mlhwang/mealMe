@@ -23,48 +23,48 @@
             tools:layout_editor_absoluteY="368dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/fishvegID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fish+Veggie"
+        android:text="@string/fish_veggie"
         tools:layout_editor_absoluteX="137dp"
         tools:layout_editor_absoluteY="110dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/meatvegID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Meat+Veggie"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        android:text="@string/meat_veggie"
+        app:layout_constraintTop_toBottomOf="@+id/fishvegID"
         tools:layout_editor_absoluteX="133dp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/meatID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Meat Only"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        android:text="@string/meat_only"
+        app:layout_constraintTop_toBottomOf="@+id/meatvegID"
         tools:layout_editor_absoluteX="141dp" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/veggrainID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Veggie+Grain"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
+        android:text="@string/veggie_grain"
+        app:layout_constraintTop_toBottomOf="@+id/meatID"
         tools:layout_editor_absoluteX="131dp" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Beverage"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
-        tools:layout_editor_absoluteX="148dp" />
+        <Button
+            android:id="@+id/beverageID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/beverage"
+            app:layout_constraintTop_toBottomOf="@+id/veggrainID"
+            tools:layout_editor_absoluteX="148dp" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -33,7 +33,8 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".MealCategorize"></activity>
+        <activity android:name=".MealCategorize" />
+        <activity android:name=".MealCompare"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mealme.mariahwang.com.myapplication.MealCompare">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/carbs_q"
+            android:textAlignment="center"
+            android:textColor="@android:color/background_dark"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/myMealID"
+            android:layout_width="match_parent"
+            android:layout_height="145dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/image_of_user_meal"
+            app:layout_constraintTop_toBottomOf="@+id/compareMealID"
+            app:srcCompat="@android:drawable/ic_menu_camera"
+            tools:layout_editor_absoluteX="176dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="39dp" />
+
+        <ImageView
+            android:id="@+id/compareMealID"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:adjustViewBounds="false"
+            android:cropToPadding="false"
+            app:srcCompat="@android:drawable/ic_menu_camera"
+            tools:layout_editor_absoluteX="175dp"
+            tools:layout_editor_absoluteY="255dp" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

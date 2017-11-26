@@ -9,4 +9,10 @@
     <string name="album_name">CameraSample</string>
     <string name="log_a_meal">Log a meal</string>
     <string name="image_of_user_meal">Image of user meal</string>
+    <string name="carbs_q">Which meal has more carbs?</string>
+    <string name="beverage">Beverage</string>
+    <string name="veggie_grain">Veggie+Grain</string>
+    <string name="meat_only">Meat Only</string>
+    <string name="meat_veggie">Meat+Veggie</string>
+    <string name="fish_veggie">Fish+Veggie</string>
 </resources>
