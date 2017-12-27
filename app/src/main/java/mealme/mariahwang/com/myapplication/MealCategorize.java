@@ -3,29 +3,42 @@ package mealme.mariahwang.com.myapplication;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MealCategorize extends AppCompatActivity {
 
+    private StorageReference mStorageRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal_categorize);
 
+        mStorageRef = FirebaseStorage.getInstance().getReference();
         final File imgFilePath = (File ) getIntent().getSerializableExtra("file_key");
         Bitmap myBitmap = BitmapFactory.decodeFile(imgFilePath.getAbsolutePath());
-        ImageView myImage = (ImageView) findViewById(R.id.imageViewID);
+        ImageView myImage = findViewById(R.id.imageViewID);
         myImage.setImageBitmap(myBitmap);
 
 
-        Button fishButton = (Button) findViewById(R.id.fishvegID);
+        Button fishButton = findViewById(R.id.fishvegID);
         fishButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -33,7 +46,7 @@ public class MealCategorize extends AppCompatActivity {
             }
         });
 
-        Button meatvegButton = (Button) findViewById(R.id.meatvegID);
+        Button meatvegButton = findViewById(R.id.meatvegID);
         meatvegButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -41,7 +54,7 @@ public class MealCategorize extends AppCompatActivity {
             }
         });
 
-        Button meatButton = (Button) findViewById(R.id.meatID);
+        Button meatButton = findViewById(R.id.meatID);
         meatButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -49,7 +62,7 @@ public class MealCategorize extends AppCompatActivity {
             }
         });
 
-        Button veggrainButton = (Button) findViewById(R.id.veggrainID);
+        Button veggrainButton = findViewById(R.id.veggrainID);
         veggrainButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -57,7 +70,7 @@ public class MealCategorize extends AppCompatActivity {
             }
         });
 
-        Button beverageButton = (Button) findViewById(R.id.beverageID);
+        Button beverageButton = findViewById(R.id.beverageID);
         beverageButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -72,7 +85,33 @@ public class MealCategorize extends AppCompatActivity {
         Intent intent = new Intent(this, MealCompare.class);
         intent.putExtra("file_key", imgFile);
         intent.putExtra("category", category);
+        uploadImage(mStorageRef, imgFile, category);
 
         startActivity(intent);
+    }
+
+    private void uploadImage(StorageReference storageRef, File imgFile, String category) {
+
+        Uri file = Uri.fromFile(imgFile);
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        StorageReference newFoodPic =
+                storageRef.child("images/" + category + "/" + timeStamp + ".jpg");
+
+        newFoodPic.putFile(file)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        // Get a URL to the uploaded content
+                        Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                        Log.e("g", String.valueOf(downloadUrl));
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle unsuccessful uploads
+                        // ...
+                    }
+                });
     }
 }
