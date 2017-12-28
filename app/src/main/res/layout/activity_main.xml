@@ -29,6 +29,11 @@
             android:onClick="onButtonClick"
             android:text="@string/log_a_meal" />
 
+        <ImageView
+            android:id="@id/logameal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
