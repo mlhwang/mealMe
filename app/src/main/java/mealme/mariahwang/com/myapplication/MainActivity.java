@@ -18,6 +18,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+
     //camera tutorial from https://appsandbiscuits.com/using-the-camera-android-14-6c61343efd04
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int REQUEST_TAKE_PHOTO = 1;
