@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "603534299211",
+    "firebase_url": "https://mealme-6a37e.firebaseio.com",
+    "project_id": "mealme-6a37e",
+    "storage_bucket": "mealme-6a37e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603534299211:android:86677bb9fd0b0fbf",
+        "android_client_info": {
+          "package_name": "mealme.mariahwang.com.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "603534299211-tvtca8gn7dehk5obp5655fmb2io77ito.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mealme.mariahwang.com.myapplication",
+            "certificate_hash": "aed6f1f90052f77444c61b7ff9dcc515e339fbf0"
+          }
+        },
+        {
+          "client_id": "603534299211-m6shocf4p5nupjd2t862rerv9q3ab0c3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMrx2Par8YfI42m1aIRBIu4CELg7RT8pU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "603534299211-m6shocf4p5nupjd2t862rerv9q3ab0c3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

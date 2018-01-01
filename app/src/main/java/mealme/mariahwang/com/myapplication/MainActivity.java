@@ -8,6 +8,8 @@ import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,7 +30,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setMonsterImage();
+        setMonsterText();
 
+
+    }
+
+    //These two methods require reading and writing some user data to firebase
+    //https://firebase.google.com/docs/database/admin/save-data
+
+    //choose what the monster wants to eat based on some user data
+    private void setMonsterText() {
+        TextView monsterText = findViewById(R.id.monsterText);
+        //lastMeal = Firebase.lookup(user,lastMealTime);
+        // if (lastMeal > 1 day ago)
+        monsterText.setText(R.string.hungryMonster);
+    }
+    //choose the image to draw based on some user data
+    private void setMonsterImage() {
+        ImageView monsterImage = findViewById(R.id.monster);
+        // monsterColor = Firebase.lookup(user,color)
+        // monsterStage = Firebase.lookup(user,stage)
+        monsterImage.setImageResource(R.drawable.blue_stage1);
     }
 
     @Override

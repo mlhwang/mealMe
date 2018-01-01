@@ -32,8 +32,14 @@
             android:onClick="onButtonClick"
             android:text="@string/log_a_meal" />
 
+        <TextView
+            android:id="@+id/monsterText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hungryMonster" />
+
         <ImageView
-            android:id="@id/logameal"
+            android:id="@+id/monster"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
