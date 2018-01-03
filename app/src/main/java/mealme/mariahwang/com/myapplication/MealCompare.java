@@ -23,7 +23,7 @@ public class MealCompare extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal_compare);
 
-        File imgFilePath = (File) getIntent().getSerializableExtra("file_key");
+        final File imgFilePath = (File) getIntent().getSerializableExtra("file_key");
         Bitmap myBitmap = BitmapFactory.decodeFile(imgFilePath.getAbsolutePath());
         myImage = findViewById(R.id.myMealID);
         myImage.setImageBitmap(myBitmap);
@@ -57,7 +57,7 @@ public class MealCompare extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        startMain();
+                        startNextStep(imgFilePath);
                     }
                 }, 2000);
             }
@@ -72,15 +72,16 @@ public class MealCompare extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        startMain();
+                        startNextStep(imgFilePath);
                     }
                 }, 2000);
             }
         });
     }
 
-    private void startMain() {
-        Intent intent = new Intent(this, MainActivity.class);
+    private void startNextStep(File imgFile) {
+        Intent intent = new Intent(this, Decomposition.class);
+        intent.putExtra("file_key", imgFile);
         startActivity(intent);
     }
 }
