@@ -5,11 +5,12 @@ android {
     buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "mealme.mariahwang.com.myapplication"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -17,12 +18,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
+
+
+
+
 
 dependencies {
     implementation 'com.android.support:design:26.1.0'
-    implementation 'com.google.firebase:firebase-storage:11.4.2'
-    implementation 'com.google.firebase:firebase-auth:11.4.2'
+    implementation 'com.google.firebase:firebase-storage:11.8.0'
+    implementation 'com.google.firebase:firebase-auth:11.8.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -32,8 +38,13 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     compile 'com.firebaseui:firebase-ui-auth:3.1.0'
+    compile 'com.google.firebase:firebase-firestore:11.8.0'
+    compile 'com.google.android.gms:play-services-auth:11.8.0'
+    compile 'com.android.support:multidex:1.0.1'
+
 
 }
+
 
 
 

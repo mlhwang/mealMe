@@ -14,13 +14,19 @@ import android.widget.ImageView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MealCategorize extends AppCompatActivity {
 
@@ -90,12 +96,14 @@ public class MealCategorize extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void uploadImage(StorageReference storageRef, File imgFile, String category) {
+    private void uploadImage(StorageReference storageRef, File imgFile, final String category) {
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         Uri file = Uri.fromFile(imgFile);
-        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        final String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
         StorageReference newFoodPic =
-                storageRef.child("images/" + category + "/" + timeStamp + ".jpg");
+                storageRef.child("images/" + category + "/" + user.getUid() + "_" + timeStamp + ".jpg");
 
         newFoodPic.putFile(file)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -103,15 +111,36 @@ public class MealCategorize extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         // Get a URL to the uploaded content
                         Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                        Log.e("g", String.valueOf(downloadUrl));
+
+                        addMealtoFirestore(downloadUrl, user, category, timeStamp);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception exception) {
-                        // Handle unsuccessful uploads
-                        // ...
+                        Log.e("g", exception.toString());
+                    }
+                })
+                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                        double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                        Log.d("MealMe", "Upload is " + progress + "% done");
                     }
                 });
+
+    }
+
+    private void addMealtoFirestore(Uri downloadUrl, FirebaseUser user, String category, String timeStamp) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Log.e("g", downloadUrl.toString());
+
+        Map<String, Object> newMeal = new HashMap<>();
+        newMeal.put("ownerUid", user.getUid());
+        newMeal.put("imageUrl", downloadUrl.toString());
+        newMeal.put("category", category);
+        //The document id should always be unique
+        db.collection("meals").document(user.getUid() + timeStamp)
+                .set(newMeal);
     }
 }

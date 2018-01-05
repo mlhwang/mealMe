@@ -29,8 +29,15 @@
             android:id="@+id/logameal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onButtonClick"
+            android:onClick="onLogMealClick"
             android:text="@string/log_a_meal" />
+
+        <Button
+            android:id="@+id/oldMeals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onHistoryClick"
+            android:text="@string/view_previous_meals" />
 
         <TextView
             android:id="@+id/monsterText"

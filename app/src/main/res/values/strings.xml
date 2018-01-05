@@ -16,4 +16,6 @@
     <string name="meat_veggie">Meat+Veggie</string>
     <string name="fish_veggie">Fish+Veggie</string>
     <string name="hungryMonster">I am hungry, feed me!</string>
+    <string name="view_previous_meals">View previous meals</string>
+    <string name="select_the_portion_size_for_each_component_of_the_meal">Select the portion size for each component of the meal</string>
 </resources>

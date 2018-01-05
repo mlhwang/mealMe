@@ -7,6 +7,7 @@
         android:required="true" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -36,7 +37,8 @@
         <activity android:name=".MealCompare" />
         <activity android:name=".MainActivity" />
         <activity android:name=".PortionEstimation" />
-        <activity android:name=".Decomposition"></activity>
+        <activity android:name=".Decomposition" />
+        <activity android:name=".ViewHistory"></activity>
     </application>
 
 </manifest>

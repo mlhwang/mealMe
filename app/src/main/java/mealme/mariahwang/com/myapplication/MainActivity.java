@@ -68,8 +68,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onButtonClick(View v){
+    public void onLogMealClick(View v) {
         dispatchTakePictureIntent();
+    }
+
+    public void onHistoryClick(View v) {
+        dispatchViewHistoryIntent();
     }
 
     private void takePhoto() {
@@ -95,6 +99,10 @@ public class MainActivity extends AppCompatActivity {
         return image;
     }
 
+    private void dispatchViewHistoryIntent() {
+        Intent intent = new Intent(this, ViewHistory.class);
+        startActivity(intent);
+    }
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
