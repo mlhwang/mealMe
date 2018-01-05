@@ -50,6 +50,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+        <TableRow>
+            <TextView android:text="name"/>
+            <EditText android:text="YeonJae"/>
+        </TableRow>
+
+        <TableRow>
+            <Button android:text="return"/>
+            <Button android:text="save"/>
+        </TableRow>>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
