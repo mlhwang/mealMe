@@ -36,6 +36,7 @@
             android:id="@+id/oldMeals"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:radius="30dp"
             android:onClick="onHistoryClick"
             android:text="@string/view_previous_meals" />
 
